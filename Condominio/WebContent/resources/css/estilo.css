@@ -14,7 +14,8 @@ section {
 }
 
 footer {
-	position: fixed;
+	
+	position: static;
 	height: 40px;
 	bottom: 0;
 	width: 100%;
@@ -55,13 +56,6 @@ legend {
 		background-color: rgb(128, 200, 240);
 	}
 
-.input-form {
-	width: 600px;
-}
-
-.combo-padrao {
-	width: 300px;
-}
 
 #button-form {
 	padding-left: 155px;

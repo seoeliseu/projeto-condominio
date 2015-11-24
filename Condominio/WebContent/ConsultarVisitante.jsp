@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	</section>
-	<%@ include file="../../fragment/rodape.html"%>
+	<%@ include file="fragment/rodape.html"%>
 
 	<script src="resources/jquery/jquery-2.1.4.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
