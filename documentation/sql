@@ -1,0 +1,55 @@
+INSERT INTO grauparentesco (GPNOME) VALUES ('PRIMO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('IRMÃO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('PAI');
+INSERT INTO grauparentesco (GPNOME) VALUES ('MÃE');
+INSERT INTO grauparentesco (GPNOME) VALUES ('TIO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('TIA');
+INSERT INTO grauparentesco (GPNOME) VALUES ('IRMÃ');
+INSERT INTO grauparentesco (GPNOME) VALUES ('FILHO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('FILHA');
+INSERT INTO grauparentesco (GPNOME) VALUES ('CUNHADO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('CUNHADA');
+INSERT INTO grauparentesco (GPNOME) VALUES ('SOGRA');
+INSERT INTO grauparentesco (GPNOME) VALUES ('SERVIÇO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('GENRO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('NORA');
+INSERT INTO grauparentesco (GPNOME) VALUES ('AVÔ');
+INSERT INTO grauparentesco (GPNOME) VALUES ('AVÓ');
+INSERT INTO grauparentesco (GPNOME) VALUES ('SOBRINHO');
+INSERT INTO grauparentesco (GPNOME) VALUES ('SOBRINHA');
+INSERT INTO grauparentesco (GPNOME) VALUES ('BISAVÔ');
+INSERT INTO grauparentesco (GPNOME) VALUES ('BISAVÓ');
+------------------------------------------------------------------------
+
+CREATE DATABASE `condominio` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
+
+CREATE TABLE `grauparentesco` (
+  `GPID` int(11) NOT NULL AUTO_INCREMENT,
+  `GPNOME` varchar(20) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`GPID`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `visitante` (
+  `VSID` int(11) NOT NULL AUTO_INCREMENT,
+  `VSNOME` varchar(45) COLLATE utf8_bin NOT NULL,
+  `VSMOTIVO` text COLLATE utf8_bin NOT NULL,
+  `VSIDPARENT` int(11) NOT NULL,
+  `VSSERVICO` varchar(100) COLLATE utf8_bin NOT NULL,
+  `VSTEL` varchar(15) COLLATE utf8_bin NOT NULL,
+  `VSCPF` float NOT NULL,
+  `VSRUA` varchar(100) COLLATE utf8_bin NOT NULL,
+  `VSBAIRRO` varchar(100) COLLATE utf8_bin NOT NULL,
+  `VSNUMERO` int(11) NOT NULL,
+  `VSCEP` float NOT NULL,
+  `VSUF` varchar(2) COLLATE utf8_bin NOT NULL,
+  `VSRG` float NOT NULL,
+  PRIMARY KEY (`VSID`),
+  KEY `VSIDPARENT_idx` (`VSIDPARENT`),
+  CONSTRAINT `VSIDPARENT` FOREIGN KEY (`VSIDPARENT`) REFERENCES `grauparentesco` (`GPID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `condominio`.`usuario` (
+  `USID` INT NOT NULL AUTO_INCREMENT,
+  `USNOME` VARCHAR(45) NOT NULL,
+  `USSENHA` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`USID`));

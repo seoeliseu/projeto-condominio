@@ -1,0 +1,74 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: #f0f0f0;
+	font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode',
+		Helvetica, sans-serif !important;
+}
+header{
+	background-color: white;
+}
+
+section {
+	padding-top: 30px;
+}
+
+footer {
+	position: fixed;
+	height: 40px;
+	bottom: 0;
+	width: 100%;
+}
+
+legend.legendStyle {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+fieldset.fsStyle {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: small;
+	font-weight: normal;
+	border: 1px solid #999999;
+	padding: 4px;
+	margin: 5px;
+}
+
+legend.legendStyle {
+	font-size: 90%;
+	color: #888888;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+legend {
+	width: auto;
+	border-bottom: 0px;
+}
+
+
+
+#nav-menu ul li a{
+	color: black;
+}
+	#nav-menu ul li a:hover {
+		background-color: rgb(128, 200, 240);
+	}
+
+.input-form {
+	width: 600px;
+}
+
+.combo-padrao {
+	width: 300px;
+}
+
+#button-form {
+	padding-left: 155px;
+}
+
+#rodape {
+	text-align: center;
+	background-color: white;
+	padding: 10px;
+}
