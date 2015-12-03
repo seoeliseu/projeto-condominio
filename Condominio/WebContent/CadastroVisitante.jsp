@@ -7,8 +7,7 @@
 
 <link href="resources/bootstrap/css/bootstrap-theme.min.css"
 	rel="stylesheet" />
-<link href="resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" />
+<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources\css\estilo.css">
 
@@ -24,35 +23,42 @@
 			<article>
 			<h3>Cadastro de Visitante</h3>
 
+			<div class="alert alert-success">
+				<strong><% String retorno = (String) request.getAttribute("retorno"); if(retorno != null) out.println(retorno); %></strong>
+			</div>
+
 			<form class="form-horizontal form-search" name="formCoordenador"
 				action="visitante?action=cadastrar" method="post">
 				<div class="cold-md-12">
 					<fieldset class="fsStyle">
 						<legend class="legendStyle"> Pessoais </legend>
-						
+
 						<div class="form-group">
 							<label for="nome" class="col-sm-2 control-label">Nome</label>
 							<div class="col-sm-8">
-								<input class="form-control " type="text" name="nome"><br>
+								<input class="form-control " type="text" name="nome"
+									required="true" pattern="[A-Z\s]+$"><br>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="rg" class="col-sm-2 control-label">RG</label>
 							<div class="col-sm-3">
-								<input class="form-control " type="text" nome="rg"><br>
+								<input class="form-control " type="text" name="rg"
+									required="true" pattern="[0-9]+$"><br>
 							</div>
 							<label for="cpf" class="col-sm-2 control-label">CPF</label>
 							<div class="col-sm-3">
-								<input class="form-control input-form" type="text" nome="cpf"><br>
+								<input class="form-control " type="text" name="cpf"
+									required="true"><br>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="parentesco" class="col-sm-2 control-label">Parentesco</label>
 							<div class="col-sm-8">
-								<select class="form-control" id="parente">
-									<option>Coordenador 1</option>
-									<option>Coordenador 2</option>
+								<select class="form-control" id="parente" name="parente">
+									<option value="1">Coordenador 1</option>
+									<option value="2">Coordenador 2</option>
 								</select>
 							</div>
 						</div>
@@ -60,13 +66,17 @@
 					<fieldset class="fsStyle">
 						<legend class="legendStyle"> Contato </legend>
 						<div class="form-group">
-							<label for="celular" class="col-sm-2 control-label">Telefone Celular</label>
+							<label for="celular" class="col-sm-2 control-label">Telefone
+								Celular</label>
 							<div class="col-sm-3">
-								<input class="form-control " type="text" name="celular"><br>
+								<input class="form-control " type="text" name="celular"
+									required="true" pattern="[0-9]+$"><br>
 							</div>
-							<label for="fixo" class="col-sm-2 control-label">Telefone Fixo</label>
+							<label for="fixo" class="col-sm-2 control-label">Telefone
+								Fixo</label>
 							<div class="col-sm-3">
-								<input class="form-control " type="text" name="fixo"><br>
+								<input class="form-control " type="text" name="fixo"
+									required="true" pattern="[0-9]+$"><br>
 							</div>
 						</div>
 					</fieldset>
@@ -75,42 +85,46 @@
 						<div class="form-group">
 							<label for="rua" class="col-sm-2 control-label">Rua</label>
 							<div class="col-sm-8">
-								<input class="form-control " type="text" name="rua"><br>
+								<input class="form-control " type="text" name="rua"
+									required="true"><br>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="bairro" class="col-sm-2 control-label">Bairro</label>
 							<div class="col-sm-4">
-								<input class="form-control " type="text" name="bairro"><br>
+								<input class="form-control " type="text" name="bairro"
+									required="true"><br>
 							</div>
 							<label for="numero" class="col-sm-2 control-label">Número</label>
 							<div class="col-sm-2">
-								<input class="form-control " type="text" name="numero"><br>
+								<input class="form-control " type="text" name="numero"
+									required="true" pattern="[0-9]+$"><br>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="cep" class="col-sm-2 control-label">CEP</label>
 							<div class="col-sm-4">
-								<input class="form-control " type="text" name="cep"><br>
+								<input class="form-control " type="text" name="cep"
+									required="true" pattern="[0-9]+$"><br>
 							</div>
 							<label for="uf" class="col-sm-2 control-label">UF</label>
 							<div class="col-sm-2">
-								<select class="form-control" >
-									<option>GO</option>
-									<option>PA</option>
+								<select class="form-control" name="estado" id="estado">
+									<option value="GO">GO</option>
+									<option value="PA">PA</option>
 								</select>
 							</div>
 						</div>
 					</fieldset>
 					<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-1">
-								<button class="btn btn-default" type="submit" name="salvar">Salvar</button>
-							</div>
-							<div class="col-sm-1">
-								<button class="btn btn-default" type="button" name="cancelar">Cancelar</button>
-							</div>
+						<div class="col-sm-offset-2 col-sm-1">
+							<button class="btn btn-default" type="submit" name="salvar">Salvar</button>
+						</div>
+						<div class="col-sm-1">
+							<button class="btn btn-default" type="button" name="cancelar">Cancelar</button>
+						</div>
 					</div>
-					
+
 				</div>
 			</form>
 

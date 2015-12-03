@@ -1,6 +1,8 @@
 package com.condominio.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,20 +25,30 @@ public class VisitanteController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		VisitanteDAO vsDao = FactoryUtil.getInstance().crie(VisitanteDAO.class);
-		
+		RequestDispatcher rd = null;
 		VisitanteEntity visitante = FactoryUtil.getInstance().crie(VisitanteEntity.class)
-		.setNome(request.getParameter("nome"))
-		.setBairro(request.getParameter("bairro"))
-		.setCep(Float.parseFloat(request.getParameter("cep")))
-		.setCpf(Float.parseFloat(request.getParameter("cpf")))
+		.setNome(convertaEmString(request.getParameter("nome")))
+		.setBairro(convertaEmString(request.getParameter("bairro")))
+		.setCep(Long.parseLong(request.getParameter("cep")))
+		.setCpf(Long.parseLong(request.getParameter("cpf")))
 		.setIdParente(Integer.parseInt(request.getParameter("parente")))
 		.setNumero(Integer.parseInt(request.getParameter("numero")))
-		.setRg(Float.parseFloat(request.getParameter("rg")))
-		.setRua(request.getParameter("rua"))
-		.setTelefone(request.getParameter("celular"))
-		.setUf(request.getParameter("uf"));
-		
-		vsDao.GraveDados(visitante);
+		.setRg(Long.parseLong(request.getParameter("rg")))
+		.setRua(convertaEmString(request.getParameter("rua")))
+		.setTelefone(convertaEmString(request.getParameter("celular")))
+		.setUf(convertaEmString(request.getParameter("estado")));
+	
+		if(vsDao.GraveDados(visitante)){
+			request.setAttribute("retorno", "Sucesso");
+		  rd = request.getRequestDispatcher("/CadastroVisitante.jsp");
+		}else{
+			request.setAttribute("retorno", "Falha ao gravar o visitante");
+			rd = request.getRequestDispatcher("/CadastroVisitante.jsp");
+		}
+		rd.forward(request, response);
 	}
 
+	private String convertaEmString(Object valor){
+		return String.valueOf(valor);
+	}
 }

@@ -27,22 +27,21 @@ public class VisitanteDAO implements IPersistencia<VisitanteEntity> {
 				VALUES + " (?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
-
+			
 			stmt = this.conn.prepareStatement(sql);
 			stmt.setString(1, objeto.getNome());
-			stmt.setString(2, objeto.getMotivo());
+			stmt.setString(2, "");
 			stmt.setInt(3, objeto.getIdParente());
 			stmt.setString(4, objeto.getTelefone());
-			stmt.setFloat(5, objeto.getCpf());
+			stmt.setLong(5, objeto.getCpf());
 			stmt.setString(6, objeto.getRua());
 			stmt.setString(7, objeto.getBairro());
 			stmt.setInt(8, objeto.getNumero());
-			stmt.setFloat(9, objeto.getCep());
+			stmt.setLong(9, objeto.getCep());
 			stmt.setString(10, objeto.getUf());
-			stmt.setFloat(11, objeto.getRg());
-
-
-			return this.stmt.execute();
+			stmt.setLong(11, objeto.getRg());
+			
+			return this.stmt.executeUpdate() > 0;
 
 		} catch (SQLException e) {
 			throw new RuntimeException();
@@ -75,13 +74,13 @@ public class VisitanteDAO implements IPersistencia<VisitanteEntity> {
 				visitante
 				.setNome(rs.getString("VSNOME"))
 				.setBairro(rs.getString("VSBAIRRO"))
-				.setCep(rs.getFloat("VSCEP"))
-				.setCpf(rs.getFloat("VSCPF"))
+				.setCep(rs.getLong("VSCEP"))
+				.setCpf(rs.getLong("VSCPF"))
 				.setId(rs.getInt("VSID"))
 				.setIdParente(rs.getInt("VSIDPARENT"))
 				.setMotivo(rs.getString("VSMOTIVO"))
 				.setNumero(rs.getInt("VSNUMERO"))
-				.setRg(rs.getFloat("VSRG"))
+				.setRg(rs.getLong("VSRG"))
 				.setRua(rs.getString("VSRUA"))
 				.setTelefone(rs.getString("VSTEL"))
 				.setUf(rs.getString("VSUF"));

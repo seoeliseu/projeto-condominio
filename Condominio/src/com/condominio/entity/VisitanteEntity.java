@@ -11,9 +11,9 @@ public class VisitanteEntity {
 	int id;
 	int idParente;
 	int numero;
-	float cpf;
-	float cep;
-	float rg;
+	long cpf;
+	long cep;
+	long rg;
 	
 	
 	public String getNome() {
@@ -79,27 +79,26 @@ public class VisitanteEntity {
 		this.numero = numero;
 		return this;
 	}
-	public float getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
-	public VisitanteEntity setCpf(float cpf) {
+	public VisitanteEntity setCpf(long cpf) {
 		this.cpf = cpf;
 		return this;
 	}
-	public float getCep() {
+	public long getCep() {
 		return cep;
 	}
-	public VisitanteEntity setCep(float cep) {
+	public VisitanteEntity setCep(long cep) {
 		this.cep = cep;
 		return this;
 	}
-	public float getRg() {
+	public long getRg() {
 		return rg;
 	}
-	public VisitanteEntity setRg(float rg) {
+	public VisitanteEntity setRg(long rg) {
 		this.rg = rg;
 		return this;
 	}
-	
 	
 }

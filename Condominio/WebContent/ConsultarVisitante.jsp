@@ -39,8 +39,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<a
-				href="<%= request.getContextPath()%>CadastroVisitante.jsp"><button class="btn btn-default">Novo Visitante</button></a>
+			<a href="<%= request.getContextPath()%>/CadastroVisitante.jsp"> <button class="btn btn-default">Novo Visitante</button></a>
 			</article>
 		</div>
 	</div>

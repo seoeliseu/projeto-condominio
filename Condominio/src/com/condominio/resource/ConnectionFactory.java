@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-	private String url = "jdbc:mysql://localhost:3306/tutor_online";
+	private String url = "jdbc:mysql://localhost:3306/condominio";
 	private String username = "root";
 	private String password = "root";
 
